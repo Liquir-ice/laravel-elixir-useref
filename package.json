@@ -1,6 +1,6 @@
 {
   "name": "laravel-elixir-useref",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "Useref wrapper ingredient for Laravel Elixir.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/morrislaptop/laravel-elixir-useref.git"
+    "url": "https://github.com/liquirice/laravel-elixir-useref.git"
   },
   "keywords": [
     "laravel",
@@ -16,19 +16,19 @@
     "useref",
     "gulp"
   ],
-  "author": "Craig Morris",
+  "author": "liquirice",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/morrislaptop/laravel-elixir-useref/issues"
+    "url": "https://github.com/liquirice/laravel-elixir-useref/issues"
   },
-  "homepage": "https://github.com/morrislaptop/laravel-elixir-useref",
+  "homepage": "https://github.com/liquirice/laravel-elixir-useref",
   "dependencies": {
-    "gulp-csso": "^1.0.0",
-    "gulp-if": "^1.2.5",
-    "gulp-load-plugins": "^0.8.0",
+    "gulp-clean-css": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-load-plugins": "^1.5.0",
     "gulp-size": "^1.2.0",
-    "gulp-uglify": "^1.1.0",
-    "gulp-useref": "^1.1.1",
-    "gulp-util": "^3.0.7"
+    "gulp-uglify": "^2.0.1",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8"
   }
 }
