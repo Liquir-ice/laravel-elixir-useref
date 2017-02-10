@@ -1,8 +1,12 @@
-var path = require('path');
-var gulp = require('gulp');
-var Elixir = require('laravel-elixir');
-var util = require('gulp-util');
-var $ = require('gulp-load-plugins')();
+var path = require('path'),
+    gulp = require('gulp'),
+    Elixir = require('laravel-elixir'),
+    util = require('gulp-util'),
+    useref = require('gulp-useref'),
+    minifyCss = require('gulp-clean-css'),
+    gulpif = require('gulp-if'),
+    uglify = require('gulp-uglify'),
+    $ = require('gulp-load-plugins')();
 
 var Task = Elixir.Task;
 
@@ -13,7 +17,7 @@ Elixir.extend('useref', function(config, opts) {
 
     config.baseDir = config.baseDir || 'resources/views';
     config.src = config.src || false;
-    config.searchLevel = config.searchLevel || '**/*.php';
+    config.searchLevel = config.searchLevel || '**/*.blade.php';
     config.outputDir = config.outputDir || 'public';
     config.minifyJs = 'minifyJs' in config ? !!config.minifyJs : true;
     config.minifyCss = 'minifyCss' in config ? !!config.minifyCss : true;
@@ -21,14 +25,14 @@ Elixir.extend('useref', function(config, opts) {
     new Task('useref', function() {
 
         var src = path.join(config.baseDir, !!config.src ? config.src : config.searchLevel);
-        var assets = $.useref.assets(opts);
 
         return gulp.src(src)
-            .pipe(assets)
+            .pipe(useref())
             .pipe(config.minifyJs ? $.if('*.js', $.uglify()) : util.noop())
-            .pipe(config.minifyCss ? $.if('*.css', $.csso()) : util.noop())
+            .pipe(config.minifyCss ? $.if('*.css', minifyCss()) : util.noop())
             .pipe(gulp.dest(config.outputDir))
-            .pipe($.size());
+            .pipe($.size())
+            ;
     });
 
 });
